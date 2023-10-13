@@ -1,0 +1,36 @@
+function getComChoice() {
+    let com = ['rock','paper','scissor'];
+    let random = Math.floor(Math.random() * 3);
+    return com[random]
+}
+
+function playRound(playerChoice, comChoice) {
+    if (playerChoice === comChoice) {
+        alert('Draw');
+        return 0
+    }   else if ((playerChoice === 'rock' && comChoice ==='paper') || (playerChoice === 'paper' && comChoice === 'scissor') || (playerChoice === 'scissor' && comChoice === 'rock')) {
+        alert('Com Win');
+        return 1        
+    }   else {
+        alert('You Win');
+        return 2
+    }
+}
+
+function fiveRound() {
+    let p = 0;
+    let c = 0;
+    for (x = 0; x < 5; x++) {
+        let i = prompt('Rock,Paper,Scissor','Pick One');
+        i = i.toLowerCase();
+        let game = playRound(i,getComChoice());
+        if (game == 1) {
+            c++
+        }   else if (game == 2) {
+            p++
+        }   else {}
+    }
+    alert(`player score = ${p}, computer score = ${c}`)
+}
+
+fiveRound()
