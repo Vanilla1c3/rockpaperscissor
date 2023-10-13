@@ -6,31 +6,56 @@ function getComChoice() {
 
 function playRound(playerChoice, comChoice) {
     if (playerChoice === comChoice) {
-        alert('Draw');
         return 0
     }   else if ((playerChoice === 'rock' && comChoice ==='paper') || (playerChoice === 'paper' && comChoice === 'scissor') || (playerChoice === 'scissor' && comChoice === 'rock')) {
-        alert('Com Win');
         return 1        
     }   else {
-        alert('You Win');
         return 2
     }
 }
+let p = 0;
+let c = 0;
 
-function fiveRound() {
-    let p = 0;
-    let c = 0;
-    for (x = 0; x < 5; x++) {
-        let i = prompt('Rock,Paper,Scissor','Pick One');
-        i = i.toLowerCase();
-        let game = playRound(i,getComChoice());
-        if (game == 1) {
-            c++
-        }   else if (game == 2) {
-            p++
-        }   else {}
-    }
-    alert(`player score = ${p}, computer score = ${c}`)
+let player = document.querySelector('.player');
+let computer = document.querySelector('.com');
+
+player.textContent = `player score = ${p}`;
+computer.textContent = `computer score = ${c}`;
+
+let board = document.querySelector('.score_board');
+
+let result = document.createElement('div');
+result.textContent = '';
+board.appendChild(result);
+
+function reset() {
+    p = 0;
+    c = 0;
+    computer.textContent = `computer score = ${c}`;
+    player.textContent = `player score = ${p}`;
 }
 
-fiveRound()
+let buttons = document.querySelectorAll('.btn');
+buttons.forEach((btn) => btn.addEventListener('click', (e) => {
+    let x = e.target.id;
+    let i = playRound(x,getComChoice())
+    if (i == 1) {
+        c++;
+        computer.textContent = `computer score = ${c}`;
+        result.textContent = 'DEFEAT';
+    }   else if (i == 2) {
+        p++;
+        player.textContent = `player score = ${p}`;
+        result.textContent = 'VICTORY';
+    }   else {
+        result.textContent = 'DRAW';
+    }
+
+    if (p == 5) {
+        alert('You Win')
+        reset()
+    }   else if (c == 5) {
+        alert('You Lose')
+        reset()
+    }
+}))

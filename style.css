@@ -1,18 +1,53 @@
 body {
     margin: 0;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: bisque;
 }
 
 .header {
-    background-color: black;
-    color: white;
+    background-color: palegoldenrod;
+    color: rgb(215, 15, 212);
     height: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.title {
-    padding: 0px;
-    border: solid 2px red;
+.score_board {
+    display: flex;
 }
+
+.player {
+    border: solid black 3px;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.com {
+    border: solid black 3px;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 5px;
+}
+.choices {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 300px;
+}
+button {
+    background-color: aliceblue;
+    font-size: 46px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 200px;
+}
+
